@@ -26,23 +26,68 @@ for i in range(65, 91):
     alfabeto_mayus.append(chr(i))
 
 
-freq_sp = {'e':16.78, 'a':11.96, 'o':8.69, 'l':8.37, 's':7.88, 'n':7.01, 'd':6.87, 'r':4.94, 'u':4.80, 'i':4.15,
-           't':3.31, 'c':2.92, 'p':2.776, 'm':2.12, 'y':1.54, 'q':1.53, 'b':0.92, 'h':0.89, 'g':0.73, 'f':0.52,
-           'v':0.39, 'j':0.30, 'ñ':0.29, 'z':0.15, 'x':0.06, 'k':0.00, 'w':0.00}
-
-emaitza = Counter(alfabeto_mayus)
+prob = Counter(alfabeto_mayus)
 
 texto_plano = text.replace(",","").replace(".","").replace(" ","").replace("[","").upper()
 
 for i in letters:
     if alfabeto_mayus.__contains__(i):
-        emaitza[i] = round((letters[i] / len(texto_plano)) * 100,3)
+        prob[i] = round((letters[i] / len(texto_plano)) * 100,3)
 
-print(emaitza)
+print(prob)
 
-deszifratuta = texto_plano.replace("X", "E").replace('E', 'A').replace('K', 'O').replace('I', 'L').replace('C', 'S').replace(
-    'J', 'N').replace('T', 'D').replace('A', 'R').replace('R', 'U').replace('Z', 'I').replace('H', 'T').replace('N', 'C') \
-    .replace('P', 'P').replace('D', 'M').replace('O', 'Y').replace('Q', 'Q').replace("B","B").replace("Ñ","H").replace('W', 'G').replace("Y","F").replace("S","V")\
-    .replace("G","J").replace("V","Ñ").replace("U","Z").replace("M","X").replace("F","K").replace("L","W")
+lista = ["A"]*len(texto_plano)
 
-print("TEXTO DESCIFRADO: "+deszifratuta)
+for i in range(len(texto_plano)):
+    if(texto_plano[i] == "X"):
+        lista[i] = "E"
+    elif (texto_plano[i] == "E"):
+        lista[i] ="A"
+    elif(texto_plano[i] == "K"):
+        lista[i] = "O"
+    elif (texto_plano[i] == "I"):
+        lista[i] = "L"
+    elif (texto_plano[i] == "C"):
+        lista[i] = "S"
+    elif (texto_plano[i] == "J"):
+        lista[i] = "N"
+    elif (texto_plano[i] == "T"):
+        lista[i] = "D"
+    elif (texto_plano[i] == "A"):
+        lista[i] = "R"
+    elif (texto_plano[i] == "R"):
+        lista[i] = "U"
+    elif (texto_plano[i] == "Z"):
+        lista[i] = "I"
+    elif (texto_plano[i] == "H"):
+        lista[i] = "T"
+    elif (texto_plano[i] == "N"):
+        lista[i] = "C"
+    elif (texto_plano[i] == "D"):
+        lista[i] = "M"
+    elif (texto_plano[i] == "O"):
+        lista[i] = "Y"
+    elif (texto_plano[i] == "Ñ"):
+        lista[i] = "H"
+    elif (texto_plano[i] == "W"):
+        lista[i] = "G"
+    elif (texto_plano[i] == "Y"):
+        lista[i] = "F"
+    elif (texto_plano[i] == "S"):
+        lista[i] = "V"
+    elif (texto_plano[i] == "G"):
+        lista[i] = "J"
+    elif (texto_plano[i] == "V"):
+        lista[i] = "Ñ"
+    elif (texto_plano[i] == "U"):
+        lista[i] = "Z"
+    elif (texto_plano[i] == "M"):
+        lista[i] = "X"
+    elif (texto_plano[i] == "F"):
+        lista[i] = "K"
+    elif (texto_plano[i] == "L"):
+        lista[i] = "W"
+
+
+
+print(lista)
